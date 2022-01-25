@@ -20,9 +20,7 @@ export const Container = styled.div`
   grid-template-columns: repeat(2, minmax(0, 100%));
   grid-column-gap: 50px;
   height: 100vh;
-
   padding: 2vh;
-
   ${isMobile(`
     display:flex;
     flex-direction:column;
