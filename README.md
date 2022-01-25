@@ -41,3 +41,6 @@ To Visit App:
 ## Reflection
 This is only an experimental project. 
 
+<img width="966" alt="Screen Shot 2022-01-24 at 21 54 44" src="https://user-images.githubusercontent.com/61159123/150890290-7a633983-e0bb-43bc-ae49-2329fe35670f.png">
+
+
