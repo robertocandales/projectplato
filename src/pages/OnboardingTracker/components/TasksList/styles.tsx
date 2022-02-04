@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Theme } from '../../../../config/theme';
 
 export const TaskCard = styled.div`
@@ -6,7 +6,7 @@ export const TaskCard = styled.div`
   align-items: center;
 
   width: 100%;
-
+  cursor: pointer;
   background-color: ${Theme.colors.secondary};
   border: 1px solid ${Theme.colors.info};
   transition: 0.3s;

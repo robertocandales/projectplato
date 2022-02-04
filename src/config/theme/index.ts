@@ -1,3 +1,5 @@
+import { createTheme } from '@mui/material/styles';
+
 interface IDefaultColors {
   primary: string;
   secondary: string;
@@ -24,6 +26,17 @@ export const MIN_FHD_WIDTH = 1920;
 export const MIN_QHD_WIDTH = 2560;
 export const MIN_4K_WIDTH = 3840;
 export const MIN_8K_WIDTH = 7680;
+
+export const CustomTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#000000',
+    },
+    secondary: {
+      main: '#F5F5F7',
+    },
+  },
+});
 
 export const Theme: ITheme = {
   dark: false,

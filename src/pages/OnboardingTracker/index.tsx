@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import UserList from './components/UserList';
 import TasksList from './components/TasksList';
-import { useDispatch } from 'react-redux';
 import { userAction } from '../../redux/actions/userActions';
 
 //styles
 import { Container, WrapperOnboarding } from './styles';
 import { Text } from '../../shared/globalStyles';
 import { tasksAction } from '../../redux/actions/tasksActions';
+import { useAppDispatch } from '../../redux/store/hooks';
 
 type Props = {};
 
 const OnboardingTracker = (_props: Props) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(userAction());

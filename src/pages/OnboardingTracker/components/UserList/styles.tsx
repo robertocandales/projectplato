@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Theme } from '../../../../config/theme';
 
 interface IUserCard {
@@ -11,6 +11,7 @@ export const UserCard = styled.div`
   width: 100%;
   background-color: ${({ background }: IUserCard) =>
     background ? background : Theme.colors.primary};
+  cursor: pointer;
 
   border: 1px solid ${Theme.colors.info};
   transition: 0.3s;

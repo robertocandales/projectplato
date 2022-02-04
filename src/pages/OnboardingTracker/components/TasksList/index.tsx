@@ -1,16 +1,15 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import Checkbox from '@mui/material/Checkbox';
 import { completeUserTaskAction } from '../../../../redux/actions/tasksActions';
-import { useAppSelector } from '../../../../redux/store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../redux/store/hooks';
 
 //styles
 import { FlexLayout, Text } from '../../../../shared/globalStyles';
-import { TaskCard, CheckBox } from './styles';
+import { TaskCard } from './styles';
 
 type Props = {};
 
 const TasksList = (_props: Props) => {
-  const dispath = useDispatch();
+  const dispath = useAppDispatch();
   const { taskByUser, isloading, error } = useAppSelector((store) => store.tasksReducer);
   const handleChange = (value: string, id: number | string) => {
     dispath(completeUserTaskAction(value, id));
@@ -30,11 +29,12 @@ const TasksList = (_props: Props) => {
           <FlexLayout flexDirection='column' align='center'>
             {(taskByUser || []).map((task) => (
               <TaskCard key={task.id}>
-                <CheckBox
-                  type='checkbox'
+                <Checkbox
                   checked={task.completed}
                   onChange={() => handleChange(task.title, task.id)}
+                  inputProps={{ 'aria-label': 'controlled' }}
                 />
+
                 <Text fontsize='15px'>{task.title}</Text>
               </TaskCard>
             ))}

@@ -1,7 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { tasksByUserAction } from '../../../../redux/actions/tasksActions';
-import { useAppSelector } from '../../../../redux/store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../redux/store/hooks';
 import { useNavigate, useParams } from 'react-router-dom';
 
 //styles
@@ -16,7 +15,7 @@ type UserParams = {
 };
 
 const UserList = (_props: Props) => {
-  const dispath = useDispatch();
+  const dispath = useAppDispatch();
   const { users, isloading, error } = useAppSelector((store) => store.userReducer);
   const { id = 1 } = useParams<UserParams>();
   let navigate = useNavigate();
