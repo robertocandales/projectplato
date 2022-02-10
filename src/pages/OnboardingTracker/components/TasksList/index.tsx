@@ -1,4 +1,5 @@
 import Checkbox from '@mui/material/Checkbox';
+import { snackbarOpenAction } from '../../../../redux/actions/snackbarActions';
 import { completeUserTaskAction } from '../../../../redux/actions/tasksActions';
 import { useAppDispatch, useAppSelector } from '../../../../redux/store/hooks';
 
@@ -9,10 +10,11 @@ import { TaskCard } from './styles';
 type Props = {};
 
 const TasksList = (_props: Props) => {
-  const dispath = useAppDispatch();
+  const dispatch = useAppDispatch();
   const { taskByUser, isloading, error } = useAppSelector((store) => store.tasksReducer);
   const handleChange = (value: string, id: number | string) => {
-    dispath(completeUserTaskAction(value, id));
+    dispatch(completeUserTaskAction(value, id));
+    dispatch(snackbarOpenAction(true, 'success', value));
   };
   return (
     <>

@@ -13,6 +13,9 @@ export const TASK_BY_USER = 'TASK_BY_USER';
 
 export const COMPLETE_USER_TASK = 'COMPLETE_USER_TASK';
 
+export const OPEN_NOTIFICATION = 'OPEN_NOTIFICATION';
+export const CLOSE_NOTIFICATION = 'CLOSE_NOTIFICATION';
+
 export interface UserListLoading {
   type: typeof USER_LIST_LOADING;
 }

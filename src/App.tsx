@@ -5,6 +5,7 @@ import { routes } from './config/routes';
 import { Provider } from 'react-redux';
 import generateStore from './redux/store';
 import { CustomTheme } from './config/theme';
+import CustomSnackbar from './shared/CustomSnackbar';
 
 //store & customTypes
 const store = generateStore();
@@ -16,6 +17,7 @@ function App() {
     <Provider store={store}>
       <ThemeProvider theme={CustomTheme}>
         <BrowserRouter>
+          <CustomSnackbar />
           <Routes>
             {(routes || []).map((route) => (
               <Route key={route.path} path={route.path} element={<route.component />} />
