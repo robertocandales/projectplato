@@ -1,10 +1,10 @@
-import OnboardingTracker from '../../pages/OnboardingTracker';
+import OnboardingTracker from '../../pages/OnboardingTracker'
 
 export const routes = [
-  {
-    component: OnboardingTracker,
-    exact: true,
-    path: 'user/:id',
-    title: 'Onboarding Tracker',
-  },
-];
+    {
+        component: OnboardingTracker,
+        exact: true,
+        path: 'user/:id',
+        title: 'Onboarding Tracker',
+    },
+]
