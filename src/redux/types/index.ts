@@ -16,6 +16,8 @@ export const COMPLETE_USER_TASK = 'COMPLETE_USER_TASK';
 export const OPEN_NOTIFICATION = 'OPEN_NOTIFICATION';
 export const CLOSE_NOTIFICATION = 'CLOSE_NOTIFICATION';
 
+export type Severity = 'error' | 'success' | 'info' | 'warning' | undefined;
+
 export interface UserListLoading {
   type: typeof USER_LIST_LOADING;
 }
@@ -46,6 +48,30 @@ export interface TaskByUser {
   type: typeof TASK_BY_USER;
   payload: number | string;
 }
+export interface completeUserTaskAction {
+  type: typeof COMPLETE_USER_TASK;
+  payload: {
+    title: string;
+    id: number | string;
+  };
+}
+
+export interface ISnackbar {
+  snackbarOpen: boolean;
+  snackbarType: Severity;
+  snackbarMessage: string;
+}
+
+interface OpenSnackbar {
+  type: typeof OPEN_NOTIFICATION;
+  payload: ISnackbar;
+}
+interface CloseSnackbar {
+  type: typeof CLOSE_NOTIFICATION;
+  payload: ISnackbar;
+}
+
+export type SnackbarActionsTypes = OpenSnackbar | CloseSnackbar | any;
 
 export type UserListDispatchTypes = UserListLoading | UserListSuccess | UserListFail;
 export type TasksListDispatchTypes =
@@ -53,4 +79,4 @@ export type TasksListDispatchTypes =
   | TasksListSuccess
   | TasksListFail
   | TaskByUser
-  | any;
+  | completeUserTaskAction;

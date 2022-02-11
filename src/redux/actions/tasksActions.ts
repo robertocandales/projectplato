@@ -30,7 +30,7 @@ export const tasksAction = () => async (dispatch: Dispatch<TasksListDispatchType
   }
 };
 
-export const tasksByUserAction = (value: number | string) => {
+export const tasksByUserAction = (value: number | string): TasksListDispatchTypes => {
   return {
     type: TASK_BY_USER,
     payload: value,

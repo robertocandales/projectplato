@@ -1,5 +1,5 @@
 import { AlertColor } from '@mui/material';
-import { OPEN_NOTIFICATION, CLOSE_NOTIFICATION } from '../types';
+import { OPEN_NOTIFICATION, CLOSE_NOTIFICATION, SnackbarActionsTypes } from '../types';
 
 interface IinitialState {
   snackbarOpen: boolean;
@@ -13,7 +13,7 @@ const initialState: IinitialState = {
   snackbarMessage: '',
 };
 
-const snackbarReducer = (state = initialState, action: any): IinitialState => {
+const snackbarReducer = (state = initialState, action: SnackbarActionsTypes): IinitialState => {
   switch (action.type) {
     case OPEN_NOTIFICATION:
       return {
