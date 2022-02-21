@@ -1,6 +1,6 @@
 import Checkbox from '@mui/material/Checkbox'
-import { snackbarOpenAction } from 'redux/store/snackbarSlice'
-import { completedUserTask } from 'redux/tasksSlice'
+import { snackbarOpenAction } from 'redux/slices/snackbarSlice'
+import { completedUserTask } from 'redux/slices/tasksSlice'
 import { useAppDispatch, useAppSelector } from '../../../../redux/store/hooks'
 
 //styles

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { Tasks } from 'config/DTOs/tasksTypes'
-import { getTasks } from 'redux/actions/tasksActions'
+import { getTasks } from 'redux/slices/tasksSlice/thunkActions'
 
 interface IinitialState {
     tasks: Tasks[]

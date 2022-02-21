@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { Severity } from 'redux/types'
+import { Severity } from 'config/DTOs/snackbarTypes'
 
 interface IinitialState {
     snackbarOpen: boolean

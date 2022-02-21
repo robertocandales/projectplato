@@ -1,20 +1,10 @@
 import thunk from 'redux-thunk'
-import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit'
-// eslint-disable-next-line import/no-named-as-default
-import userSlice from 'redux/userSlice'
-// eslint-disable-next-line import/no-named-as-default
-import tasksSlice from 'redux/tasksSlice'
-// eslint-disable-next-line import/no-named-as-default
-import snackbarSlice from './snackbarSlice'
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 
-const reducer = combineReducers({
-    userSlice,
-    tasksSlice,
-    snackbarSlice,
-})
+import { rootReducer } from 'redux/reducers/rootReducer'
 
 export const store = configureStore({
-    reducer,
+    reducer: rootReducer,
     devTools: true,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
 })

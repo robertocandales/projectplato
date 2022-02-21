@@ -8,9 +8,9 @@ import { Container, WrapperOnboarding } from './styles'
 import { Text } from '../../shared/globalStyles'
 //import { tasksAction } from '../../redux/actions/tasksActions'
 import { useAppDispatch } from '../../redux/store/hooks'
-import { getUsers } from 'redux/userSlice'
-import { getTasks } from 'redux/actions/tasksActions'
-import { filterByUser } from 'redux/tasksSlice'
+import { getUsers } from 'redux/slices/userSlice'
+import { getTasks } from 'redux/slices/tasksSlice/thunkActions'
+import { filterByUser } from 'redux/slices/tasksSlice'
 
 const OnboardingTracker = () => {
     const dispatch = useAppDispatch()

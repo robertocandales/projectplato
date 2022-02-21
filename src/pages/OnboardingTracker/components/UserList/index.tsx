@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { FlexLayout, Text } from '../../../../shared/globalStyles'
 import { UserCard } from './styles'
 import { Theme } from '../../../../config/theme'
-import { filterByUser } from 'redux/tasksSlice'
+import { filterByUser } from 'redux/slices/tasksSlice'
 
 type UserParams = {
     id: string
