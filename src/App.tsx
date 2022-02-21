@@ -3,12 +3,11 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material/styles'
 import { routes } from './config/routes'
 import { Provider } from 'react-redux'
-import generateStore from './redux/store'
 import { CustomTheme } from './config/theme'
 import CustomSnackbar from './shared/CustomSnackbar'
+import { store } from 'redux/store'
 
 //store & customTypes
-const store = generateStore()
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 

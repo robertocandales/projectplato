@@ -1,10 +1,11 @@
-import { combineReducers } from 'redux'
-import snackbarReducer from './snackbarReducer'
-import tasksReducer from './tasksReducer'
-import userReducer from './userReducer'
+/* eslint-disable import/no-named-as-default */
+import { combineReducers } from '@reduxjs/toolkit'
+import snackbarSlice from 'redux/slices/snackbarSlice'
+import tasksSlice from 'redux/slices/tasksSlice'
+import userSlice from 'redux/slices/userSlice'
 
 export const rootReducer = combineReducers({
-    userReducer,
-    tasksReducer,
-    snackbarReducer,
+    userSlice,
+    tasksSlice,
+    snackbarSlice,
 })

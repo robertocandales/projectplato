@@ -1,5 +1,4 @@
 import React from 'react'
-import { tasksByUserAction } from '../../../../redux/actions/tasksActions'
 import { useAppDispatch, useAppSelector } from '../../../../redux/store/hooks'
 import { useNavigate, useParams } from 'react-router-dom'
 
@@ -7,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { FlexLayout, Text } from '../../../../shared/globalStyles'
 import { UserCard } from './styles'
 import { Theme } from '../../../../config/theme'
+import { filterByUser } from 'redux/slices/tasksSlice'
 
 type UserParams = {
     id: string
@@ -14,11 +14,11 @@ type UserParams = {
 
 const UserList = () => {
     const dispath = useAppDispatch()
-    const { users, isloading, error } = useAppSelector((store) => store.userReducer)
+    const { users, isloading, error } = useAppSelector((store) => store.userSlice)
     const { id = 1 } = useParams<UserParams>()
     const navigate = useNavigate()
     const showTasks = (value: string | number) => {
-        dispath(tasksByUserAction(value))
+        dispath(filterByUser(value))
         navigate(`/user/${value}`)
     }
 
@@ -33,8 +33,8 @@ const UserList = () => {
                 <Text fontWeight='600' fontsize='20px' padding='0px 0 10px 0'>
                     User list
                 </Text>
-                {error ? (
-                    <div>error</div>
+                {error.isError ? (
+                    <div>{error.message}</div>
                 ) : isloading ? (
                     <div>loading</div>
                 ) : (
