@@ -1,48 +1,14 @@
-import {
-    TasksListDispatchTypes,
-    TASKS_LIST_LOADING,
-    TASKS_LIST_SUCCESS,
-    TASKS_LIST_FAIL,
-    TASK_BY_USER,
-    COMPLETE_USER_TASK,
-} from '../types'
-import { Dispatch } from 'redux'
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import { Tasks } from 'config/DTOs/tasksTypes'
+import TasksService from 'config/services/TasksListServices'
 
-import TasksService from '../../config/services/TasksListServices'
-import { Tasks } from '../../config/DTOs/tasksTypes'
-
-export const tasksByUserAction = (value: number | string): TasksListDispatchTypes => {
-    return {
-        type: TASK_BY_USER,
-        payload: value,
-    }
-}
-
-export const tasksAction = () => async (dispatch: Dispatch<TasksListDispatchTypes>) => {
+export const getTasks = createAsyncThunk('tasks/getTasks', async (_, { rejectWithValue }) => {
     try {
-        dispatch({
-            type: TASKS_LIST_LOADING,
-        })
         const res: Tasks[] = await TasksService.getTasks()
 
-        dispatch({
-            type: TASKS_LIST_SUCCESS,
-            payload: res,
-        })
-        dispatch(tasksByUserAction(1))
-    } catch (e) {
-        dispatch({
-            type: TASKS_LIST_FAIL,
-        })
+        return res
+    } catch (error: unknown) {
+        const message: string = (error as Error).message
+        return rejectWithValue(message as string)
     }
-}
-
-export const completeUserTaskAction = (
-    title: string,
-    id: number | string
-): TasksListDispatchTypes => {
-    return {
-        type: COMPLETE_USER_TASK,
-        payload: { title, id },
-    }
-}
+})

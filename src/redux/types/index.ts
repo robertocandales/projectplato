@@ -71,7 +71,7 @@ interface CloseSnackbar {
     payload: ISnackbar
 }
 
-export type SnackbarActionsTypes = OpenSnackbar | CloseSnackbar | any
+export type SnackbarActionsTypes = OpenSnackbar | CloseSnackbar
 
 export type UserListDispatchTypes = UserListLoading | UserListSuccess | UserListFail
 export type TasksListDispatchTypes =

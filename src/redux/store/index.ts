@@ -1,20 +1,29 @@
-import { createStore, compose, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
+import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit'
+// eslint-disable-next-line import/no-named-as-default
+import userSlice from 'redux/userSlice'
+// eslint-disable-next-line import/no-named-as-default
+import tasksSlice from 'redux/tasksSlice'
+// eslint-disable-next-line import/no-named-as-default
+import snackbarSlice from './snackbarSlice'
 
-// Import Reducers
-import { rootReducer } from '../reducers/rootReducer'
+const reducer = combineReducers({
+    userSlice,
+    tasksSlice,
+    snackbarSlice,
+})
 
-declare global {
-    interface Window {
-        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
-    }
-}
+export const store = configureStore({
+    reducer,
+    devTools: true,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
+})
 
-let composeEnhancers = compose
-
-composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-
-export default function generateStore() {
-    const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
-    return store
-}
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+export type AppThunk<ReturnType = void> = ThunkAction<
+    ReturnType,
+    RootState,
+    unknown,
+    Action<string>
+>
